@@ -17,8 +17,6 @@ import nltk.data
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 word_detokenize = TreebankWordDetokenizer().detokenize
 
-from transformers import RobertaTokenizer
-tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 
 def highlight_on_words(article_original, highlights_original):
 	W = set(highlights_original).intersection(set(article_original))
@@ -140,9 +138,9 @@ def augment(text):
 	return text
 
 def tokenSubstitute(text):
-	text = text.replace('ORANGEGROUPSTART', tokenizer.convert_ids_to_tokens(0))
-	text = text.replace('ORANGEGROUPEND', tokenizer.convert_ids_to_tokens(2))
-	text = text.replace('ORANGEIGNORESTART', tokenizer.convert_ids_to_tokens(50264))
+	text = text.replace('ORANGEGROUPSTART', '<s>')
+	text = text.replace('ORANGEGROUPEND', '</s>')
+	text = text.replace('ORANGEIGNORESTART', '<mask>')
 	return text
 
 def preprocess(article, highlights, aug = False):
