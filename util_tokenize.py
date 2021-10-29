@@ -150,9 +150,9 @@ def preprocess(article, highlights, aug = False):
 	labeled_article = interpose(article_original, labels_original, ignore_mask) # list
 	if aug and random.random() > 0.5:
 		labeled_article = augment(labeled_article) # string
-		labeled_article = tokenSubstitute(labeled_article) # string
 	else:
 		labeled_article = word_detokenize(labeled_article) # string
+	labeled_article = tokenSubstitute(labeled_article) # string
 	return labeled_article.lower()
 
 def mark(labeled_article):
