@@ -164,7 +164,7 @@ def mark(labeled_article):
 	for i, v in enumerate(labeled_article):
 		if i == 0:
 			pass
-		elif i == 511:
+		elif len(article_ids) == 511:
 			article_ids.append(2)
 			labels.append(1)
 			break
