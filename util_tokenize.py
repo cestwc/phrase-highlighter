@@ -158,7 +158,7 @@ def preprocess(article, highlights, aug = False):
 def mark(labeled_article):
 
 	article_ids = [0]
-	labels = [1]
+	labels = [0]
 	ignoring = False
 	highlighting = False
 	for i, v in enumerate(labeled_article):
@@ -166,7 +166,7 @@ def mark(labeled_article):
 			pass
 		elif len(article_ids) == 511:
 			article_ids.append(2)
-			labels.append(1)
+			labels.append(0)
 			break
 		elif v == 0:
 			highlighting = True
