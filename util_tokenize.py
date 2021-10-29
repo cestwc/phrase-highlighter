@@ -148,7 +148,7 @@ def preprocess(article, highlights, aug = False):
 	highlights_original = word_tokenize(highlights)
 	labels_original, ignore_mask = highlight_on_words(article_original, highlights_original)
 	labeled_article = interpose(article_original, labels_original, ignore_mask) # list
-	if aug and random.random() > 0.5:
+	if aug and random.random() > 0.1:
 		labeled_article = augment(labeled_article) # string
 	else:
 		labeled_article = word_detokenize(labeled_article) # string
