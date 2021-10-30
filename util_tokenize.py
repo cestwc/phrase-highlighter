@@ -177,6 +177,8 @@ def mark(labeled_article):
 		elif v == 2:
 			highlighting = False
 			ignoring = False
+		elif v == 1437:
+			pass
 		else:
 			article_ids.append(v)
 			if highlighting:
@@ -188,3 +190,38 @@ def mark(labeled_article):
 
 	assert len(article_ids) == len(labels)
 	return article_ids, labels
+
+
+def phrases(labeled_article):
+	phrases_ids = [0]
+	ignoring = False
+	highlighting = False
+	for i, v in enumerate(labeled_article):
+		if i == 0:
+			pass
+		elif len(phrases_ids) == 1022:
+			break
+		elif v == 0:
+			highlighting = True
+			ignoring = False
+		elif v == 50264:
+			ignoring = True
+			highlighting = False
+		elif v == 2:
+			highlighting = False
+			ignoring = False
+		elif v == 1437:
+			pass
+		else:
+			if highlighting:
+				phrases_ids.append(v)
+			elif ignoring:
+				if random.random() > 0.8:
+					phrases_ids.append(v)
+			else:
+				pass
+
+	phrases_ids.append(2)
+
+	assert len(phrases_ids) < 1024
+	return phrases_ids
